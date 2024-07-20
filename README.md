@@ -1,6 +1,6 @@
 # Projeto de Programação orientada a objetos (POO)
 
-## Desenvolivimento de um joguinho
+## Desenvolvimento de um joguinho
 
 O presente repositório é com foco em criar um joguinho simples usando p5.js baseados nas aulas de POO.
 
