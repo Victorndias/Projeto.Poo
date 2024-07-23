@@ -3,6 +3,8 @@ let cursorImg;
 var disparoAtivo = false;
 var xd;
 var yd;
+let lineX = 0;
+let lineY = 0;
 
 function preload(){
   cursorImg = loadImage("nave.png");
@@ -14,7 +16,7 @@ function setup() {
 }
 
 function draw() {
-  background('blue');
+  background('rgb(1,1,13)');
   
   rect(x,y,15,50);
     y++;
@@ -34,6 +36,14 @@ function draw() {
           disparoAtivo = false;
         }
       }
+
+      //animação da velocidade das estrelas no fundo//
+      push();
+      stroke('white');
+      line(lineX, lineY, lineX +2, lineY -30);
+      lineX = random(width);
+      lineY = random(height);
+      pop();
   
   if(y > 400){
     x = random(50,350);
