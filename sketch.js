@@ -90,6 +90,6 @@ function mousePressed() {
   if (!disparoAtivo) {
     disparoAtivo = true;
     yd = mouseY;
-    xd = mouseX;
+    xd = mouseX + cursorImg.width /2;
   }
 }
