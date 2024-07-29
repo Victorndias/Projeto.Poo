@@ -60,7 +60,7 @@ function mousePressed() {
 
 class Alvo {
   constructor() {
-    this.x = random(50, 350);
+    this.x = random(50, 850);
     this.y = 5;
   }
 
@@ -73,7 +73,7 @@ class Alvo {
   }
 
   reset() {
-    this.x = random(50, 350);
+    this.x = random(50, 850);
     this.y = 0;
   }
 
