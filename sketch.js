@@ -1,11 +1,13 @@
+//Variáveis//
 let cursorImg;
 let AlvoImg;
 let alvo;
-let disparo;
 let estrelas = [];
+let disparo;
 let vida = 3;
 let pontuacao = 0;
 
+//Função para carregar a imegem e deixar pronto pra uso//
 function preload() {
   cursorImg = loadImage("nave.png");
   AlvoImg = loadImage("navets.png");
@@ -17,6 +19,7 @@ function setup() {
   alvo = new Alvo();
   disparo = new Disparo();
 
+  //for responsável por criar um lop e adiciona estrelas até chegar na quantidade desejada//
   for (let i = 0; i < 5; i++) {
     estrelas.push(new Estrela());
   }
@@ -32,6 +35,7 @@ function draw() {
     disparo.move();
     disparo.display();
 
+    //Para verificar se a nave inimiga foi destruida e pontua//
     if (disparo.acertou(alvo)) {
       disparo.ativo = false;
       pontuacao++;
@@ -44,26 +48,33 @@ function draw() {
     estrela.update();
   }
 
+  //Verifica se o alvo saiu da tela ou não//
   alvo.verificaSaida();
+  //O objetivo mostra algumas coisa na interface//
   displayHUD();
 
+  //IF para observar se a vida ficou menor ou igual a 0//
   if (vida <= 0) {
     gameOver();
   }
 }
 
+//função para verificar se o mouse foi pressionado, se sim a ação é efetuado//
 function mousePressed() {
   if (!disparo.ativo) {
     disparo.ativar(mouseX, mouseY);
   }
 }
 
+//Classe Alvo//
 class Alvo {
   constructor() {
+    //Gerar uma possicão aleatória no eixo x//
     this.x = random(50, 850);
     this.y = 5;
   }
 
+  //parte responsável pelo movimento da nave//
   move() {
     this.y++;
   }
@@ -73,10 +84,12 @@ class Alvo {
   }
 
   reset() {
+    //Gerar uma possicão aleatória no eixo x//
     this.x = random(50, 850);
     this.y = 0;
   }
 
+  //Verifica se o objeto saiu das dimessão e diminui -1 na vida//
   verificaSaida() {
     if (this.y > height) {
       this.reset();
@@ -85,6 +98,7 @@ class Alvo {
   }
 }
 
+//Classe Disparo//
 class Disparo {
   constructor() {
     this.x = 0;
@@ -98,6 +112,7 @@ class Disparo {
     this.ativo = true;
   }
 
+  //velocidade do disparo//
   move() {
     this.y -= 8;
     if (this.y < 0) {
@@ -105,17 +120,20 @@ class Disparo {
     }
   }
 
+  //Cor, tamanho e deixar centralizado o disparo da nave//
   display() {
     fill('yellow');
     ellipse(this.x+ cursorImg.width /2, this.y, 5, 10);
   }
 
+  //Trecho responsável por verificar se acertou ou o alvo// 
   acertou(alvo) {
     return this.x > alvo.x && this.x < alvo.x + AlvoImg.width &&
            this.y > alvo.y && this.y < alvo.y + AlvoImg.height;
   }
 }
 
+//Classe Estrela//
 class Estrela {
   constructor() {
     this.x = random(width);
@@ -136,22 +154,23 @@ class Estrela {
 }
 
 function displayHUD() {
-  // Desenha a imagem do cursor
+  // Desenha a imagem do cursor//
   image(cursorImg, mouseX, mouseY);
 
-  // Desenha a barra de vida
+  // Desenha a barra de vida//
   fill('red');
   rect(10, 10, vida * 30, 20);
   noFill();
   stroke('white');
-  rect(10, 10, 90, 20); // Moldura da barra de vida
+  rect(10, 10, 90, 20); // Moldura da barra de vida//
 
-  // Desenha a pontuação
+  // Desenha a pontuação//
   fill('white');
   textSize(16);
   text("Pontuação: " + pontuacao, 10, 50);
 }
 
+// Desenha Game Over na tela//
 function gameOver() {
   noLoop();
   fill('white');
