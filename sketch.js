@@ -64,8 +64,11 @@ for (let estrela of estrelas) {
 }
 
   //Verifica se o alvo saiu da tela ou não//
-  meteoro.verificaSaida();
-  nave.verificaSaida();
+    meteoro.verificaSaida();
+    meteoro2.verificaSaida();
+    meteoro3.verificaSaida();
+    meteoro4.verificaSaida();
+    nave.verificaSaida();
   //O objetivo mostra algumas coisa na interface//
   displayHUD();
 
