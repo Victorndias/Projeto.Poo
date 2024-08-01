@@ -64,7 +64,8 @@ for (let estrela of estrelas) {
 }
 
   //Verifica se o alvo saiu da tela ou não//
-  alvo.verificaSaida();
+  meteoro.verificaSaida();
+  nave.verificaSaida();
   //O objetivo mostra algumas coisa na interface//
   displayHUD();
 
@@ -82,30 +83,27 @@ function mousePressed() {
 }
 
 //Classe Alvo//
-class Alvo {
+class Nave {
+  
   constructor() {
-    //Gerar uma possicão aleatória no eixo x//
-    this.x = random(50, 850);
+//Gerar uma possicão aleatória no eixo x//
+    this.xNave = random(50, 850);
     this.y = 5;
   }
-
-  //parte responsável pelo movimento da nave//
-  move() {
+//parte responsável pelo movimento da nave//
+    move()  {
     this.y++;
   }
-
-  display() {
-    image(AlvoImg, this.x, this.y);
+    display() {
+    image(AlvoImg, this.xNave, this.y);
   }
-
-  reset() {
-    //Gerar uma possicão aleatória no eixo x//
-    this.x = random(50, 850);
-    this.y = 0;
+    reset() {
+//Gerar uma possicão aleatória no eixo x//
+    this.xNave = random(50, 850);
+    this.y = Math.random(0, 850);
   }
-
-  //Verifica se o objeto saiu das dimessão e diminui -1 na vida//
   verificaSaida() {
+//Verifica se o objeto saiu das dimessão e diminui -1 na vida//
     if (this.y > height) {
       this.reset();
       vida--;
@@ -114,20 +112,39 @@ class Alvo {
 }
 
 //Classe Disparo//
+class Meteoro {
+  constructor() {
+    this.xMeteoro = random(40, 850);
+   this.y = random(0, 150);
+  }
+  move() {
+    this.y++;
+  }
+  display() {
+    image(meteoroImg, this.xMeteoro, this.y);
+  }
+  reset() {
+    this.xMeteoro = random(40, 850);
+   this.y = random(0, 150);;
+  }
+  verificaSaida() {
+    if (this.y > height) {
+      this.reset();
+    }
+  }
+}
 class Disparo {
   constructor() {
     this.x = 0;
     this.y = 0;
-    this.ativo = false;
+    this.ativo = true;
   }
-
   ativar(x, y) {
     this.x = x;
     this.y = y;
     this.ativo = true;
   }
-
-  //velocidade do disparo//
+//velocidade do disparo//
   move() {
     this.y -= 8;
     if (this.y < 0) {
@@ -135,19 +152,17 @@ class Disparo {
     }
   }
 
-  //Cor, tamanho e deixar centralizado o disparo da nave//
+//Cor, tamanho e deixar centralizado o disparo da nave//
   display() {
     fill('yellow');
-    ellipse(this.x+ cursorImg.width /2, this.y, 5, 10);
+    ellipse(this.x+ cursorImg.width /2, this.y, 15, 10);
   }
-
-  //Trecho responsável por verificar se acertou ou o alvo// 
+//Trecho responsável por verificar se acertou ou o alvo// 
   acertou(alvo) {
-    return this.x > alvo.x && this.x < alvo.x + AlvoImg.width &&
+    return this.x > alvo.xNave && this.x < alvo.xNave + AlvoImg.width &&
            this.y > alvo.y && this.y < alvo.y + AlvoImg.height;
   }
 }
-
 //Classe Estrela//
 class Estrela {
   constructor() {
