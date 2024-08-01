@@ -51,17 +51,17 @@ function draw() {
     disparo.move();
     disparo.display();
 //Para verificar se a nave inimiga foi destruida e pontua//
-    if (disparo.acertou(alvo)) {
+    if (disparo.acertou(nave)) {
       disparo.ativo = false;
       pontuacao++;
-      alvo.reset();
+      nave.reset();
     }
   }
 
-  for (let estrela of estrelas) {
+for (let estrela of estrelas) {
     estrela.display();
     estrela.update();
-  }
+}
 
   //Verifica se o alvo saiu da tela ou não//
   alvo.verificaSaida();
