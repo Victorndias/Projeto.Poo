@@ -191,11 +191,11 @@ function displayHUD() {
   rect(10, 10, vida * 30, 20);
   noFill();
   stroke('white');
-  rect(10, 10, 90, 20); // Moldura da barra de vida//
-
+  // Moldura da barra de vida//
+  rect(10, 10, 90, 20);
   // Desenha a pontuação//
   fill('white');
-  textSize(16);
+  textSize(15);
   text("Pontuação: " + pontuacao, 10, 50);
 }
 
