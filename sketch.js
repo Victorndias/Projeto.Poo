@@ -182,9 +182,8 @@ class Estrela {
     pop();
   }
 }
-
 function displayHUD() {
-  // Desenha a imagem do cursor//
+// Desenha a imagem do cursor//
   image(cursorImg, mouseX, mouseY);
 
   // Desenha a barra de vida//
