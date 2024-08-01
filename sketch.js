@@ -202,8 +202,8 @@ function displayHUD() {
 // Desenha Game Over na tela//
 function gameOver() {
   noLoop();
-  fill('white');
-  textSize(32);
+  fill('red');
+  textSize(45);
   textAlign(CENTER, CENTER);
   text("Game Over", width / 2, height / 2);
 }
