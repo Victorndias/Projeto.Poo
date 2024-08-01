@@ -36,14 +36,21 @@ function setup() {
 function draw() {
   background('rgb(1,1,13)');
 
-  alvo.move();
-  alvo.display();
+  nave.move();
+  nave.display();
+  meteoro.move();
+  meteoro.display();
+  meteoro2.move();
+  meteoro2.display();
+  meteoro3.move();
+  meteoro3.display();
+  meteoro4.move();
+  meteoro4.display();
 
   if (disparo.ativo) {
     disparo.move();
     disparo.display();
-
-    //Para verificar se a nave inimiga foi destruida e pontua//
+//Para verificar se a nave inimiga foi destruida e pontua//
     if (disparo.acertou(alvo)) {
       disparo.ativo = false;
       pontuacao++;
