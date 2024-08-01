@@ -1,22 +1,30 @@
 //Variáveis//
 let cursorImg;
 let AlvoImg;
+let meteoroImg;
 let alvo;
-let estrelas = [];
 let disparo;
+let estrelas = [];
 let vida = 3;
 let pontuacao = 0;
 
 //Função para carregar a imegem e deixar pronto pra uso//
 function preload() {
+  meteoroImg = loadImage("asteroid.gif");
   cursorImg = loadImage("nave.png");
   AlvoImg = loadImage("navets.png");
 }
 
 function setup() {
-  createCanvas(900, 600);
+  createCanvas(920,600);
   noCursor();
-  alvo = new Alvo();
+  meteoro = new Meteoro();
+  meteoro2 = new Meteoro();
+  meteoro3 = new Meteoro();
+  meteoro4 = new Meteoro();
+
+  nave = new Nave();
+
   disparo = new Disparo();
 
   //for responsável por criar um lop e adiciona estrelas até chegar na quantidade desejada//
