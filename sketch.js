@@ -8,7 +8,7 @@ let vida = 3;
 let pontuacao = 0;
 
 function preload() {
-  meteoroImg = loadImage("asteroid.gif");
+  meteoroImg = loadImage("Meteor1.png");
   cursorImg = loadImage("nave.png");
   AlvoImg = loadImage("navets.png");
 }
