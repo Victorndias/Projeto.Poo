@@ -38,8 +38,10 @@ function draw() {
   meteoro.move();
   meteoro.display();
   meteoro2.move();
-  meteoro2.display();meteoro3.move();
-  meteoro3.display();meteoro4.move();
+  meteoro2.display();
+  meteoro3.move();
+  meteoro3.display();
+  meteoro4.move();
   meteoro4.display();
 
   if (disparo.ativo) {
@@ -52,17 +54,6 @@ function draw() {
       nave.reset();
     }
   }
-
-  /*if (disparo.ativo) {
-    disparo.move();
-    disparo.display();
-    
-    if (disparo.acertou(nave)) {
-      disparo.ativo = false;
-      pontuacao++;
-      nave.reset();
-    }
-  }*/
 
   for (let estrela of estrelas) {
     estrela.display();
