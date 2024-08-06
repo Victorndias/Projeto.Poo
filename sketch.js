@@ -60,6 +60,7 @@ function draw() {
     estrela.update();
   }
 
+//verifica a saída de cada meteoro  
   meteoro.verificaSaida();
   meteoro2.verificaSaida();
   meteoro3.verificaSaida();
