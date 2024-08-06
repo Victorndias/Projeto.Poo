@@ -61,6 +61,10 @@ function draw() {
   }
 
   meteoro.verificaSaida();
+  meteoro2.verificaSaida();
+  meteoro3.verificaSaida();
+  meteoro4.verificaSaida();
+  
   nave.verificaSaida();
 
   displayHUD();
