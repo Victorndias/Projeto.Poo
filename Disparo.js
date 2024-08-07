@@ -11,21 +11,23 @@ class Disparo {
       this.ativo = true;
     }
   
+    //velocidade do disparo//
     move() {
       this.y -= 8;
       if (this.y < 0) {
         this.ativo = false;
       }
     }
-  
+    
+    //Cor, tamanho e deixar centralizado o disparo da nave//
     display() {
       fill('yellow');
       ellipse(this.x+ cursorImg.width /2, this.y, 5, 10);
     }
-  
+
+    //Trecho responsável por verificar se acertou ou o alvo// 
     acertou(alvo) {
       return this.x > alvo.xNave && this.x < alvo.xNave + AlvoImg.width &&
              this.y > alvo.y && this.y < alvo.y + AlvoImg.height;
     }
-  
   }

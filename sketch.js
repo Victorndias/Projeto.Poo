@@ -1,3 +1,4 @@
+//Variáveis//
 let cursorImg;
 let AlvoImg;
 let meteoroImg;
@@ -7,6 +8,7 @@ let estrelas = [];
 let vida = 3;
 let pontuacao = 0;
 
+//Função para carregar a imegem e deixar pronto pra uso//
 function preload() {
   meteoroImg = loadImage("Meteor1.png");
   cursorImg = loadImage("nave.png");
@@ -21,10 +23,12 @@ function setup() {
   meteoro3 = new Meteoro();
   meteoro4 = new Meteoro();
 
+  //criar um novo objetivo a partir dessa classe//
   nave = new Nave();
 
   disparo = new Disparo();
 
+  //for responsável por criar um lop e adiciona estrelas até chegar na quantidade desejada//
   for (let i = 0; i < 5; i++) {
     estrelas.push(new Estrela());
   }
@@ -33,6 +37,7 @@ function setup() {
 function draw() {
   background('rgb(1,1,13)');
 
+  //move e desenhar na interface//
   nave.move();
   nave.display();
   meteoro.move();
@@ -47,7 +52,8 @@ function draw() {
   if (disparo.ativo) {
     disparo.move();
     disparo.display();
-    
+
+    //if para verificar se acertou o alvo//
     if (disparo.acertou(nave)) {
       disparo.ativo = false;
       pontuacao++;
@@ -66,15 +72,19 @@ function draw() {
   meteoro3.verificaSaida();
   meteoro4.verificaSaida();
   
+  //Verifica se o alvo saiu da tela ou não//
   nave.verificaSaida();
 
+  //Objetivo é desenhar na interface//
   displayHUD();
 
+  //IF para observar se a vida ficou menor ou igual a 0//
   if (vida <= 0) {
     gameOver();
   }
 }
 
+//função para verificar se o mouse foi pressionado, se sim a ação é efetuado//
 function mousePressed() {
     if (!disparo.ativo) {
     disparo.ativar(mouseX, mouseY);
@@ -98,6 +108,7 @@ function displayHUD() {
   text("Pontuação: " + pontuacao, 10, 50);
 }
 
+// Desenha Game Over na tela//
 function gameOver() {
   noLoop();
   fill('red');
