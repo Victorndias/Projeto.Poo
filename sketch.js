@@ -5,8 +5,10 @@ let meteoroImg;
 let alvo;
 let disparo;
 let estrelas = [];
+let meteoros = [];
 let vida = 3;
 let pontuacao = 0;
+let n_meteoros = 4;
 
 //Função para carregar a imegem e deixar pronto pra uso//
 function preload() {
@@ -18,15 +20,14 @@ function preload() {
 function setup() {
   createCanvas(920,600);
   noCursor();
-  meteoro = new Meteoro();
-  meteoro2 = new Meteoro();
-  meteoro3 = new Meteoro();
-  meteoro4 = new Meteoro();
 
   //criar um novo objetivo a partir dessa classe//
   nave = new Nave();
-
   disparo = new Disparo();
+
+  for (let i = 0; i < n_meteoros; i++){
+    meteoros.push(new Meteoros());
+  }
 
   //for responsável por criar um lop e adiciona estrelas até chegar na quantidade desejada//
   for (let i = 0; i < 5; i++) {
@@ -40,14 +41,10 @@ function draw() {
   //move e desenhar na interface//
   nave.move();
   nave.display();
-  meteoro.move();
-  meteoro.display();
-  meteoro2.move();
-  meteoro2.display();
-  meteoro3.move();
-  meteoro3.display();
-  meteoro4.move();
-  meteoro4.display();
+
+  for (let i = 0; i < n_meteoros; i++){
+    meteoros[i].move();
+    meteoros[i].displey();
 
   if (disparo.ativo) {
     disparo.move();
