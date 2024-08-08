@@ -26,7 +26,7 @@ function setup() {
   disparo = new Disparo();
 
   for (let i = 0; i < n_meteoros; i++){
-    meteoros.push(new Meteoros());
+    meteoros.push(new Meteoro());
   }
 
   //for responsável por criar um lop e adiciona estrelas até chegar na quantidade desejada//
