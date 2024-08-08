@@ -42,9 +42,10 @@ function draw() {
   nave.move();
   nave.display();
 
-  for (let i = 0; i < n_meteoros; i++){
+  for (let i = 0; i < n_meteoros; i++) {
     meteoros[i].move();
-    meteoros[i].displey();
+    meteoros[i].display();
+  }
 
   if (disparo.ativo) {
     disparo.move();
@@ -63,11 +64,10 @@ function draw() {
     estrela.update();
   }
 
-//verifica a saída de cada meteoro  
-  meteoro.verificaSaida();
-  meteoro2.verificaSaida();
-  meteoro3.verificaSaida();
-  meteoro4.verificaSaida();
+//verifica a saída dos meteoros 
+ for (let i = 0; i < n_meteoros; i++) {
+   meteoros[i].verificaSaida();
+ }
   
   //Verifica se o alvo saiu da tela ou não//
   nave.verificaSaida();
