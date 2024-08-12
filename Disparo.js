@@ -27,7 +27,7 @@ class Disparo {
 
     //Trecho responsável por verificar se acertou ou o alvo// 
     acertou(alvo) {
-      return this.x > alvo.xNave && this.x < alvo.xNave + AlvoImg.width &&
-             this.y > alvo.y && this.y < alvo.y + AlvoImg.height;
+      return this.x > alvo.xNave/2 && this.x < alvo.xNave + AlvoImg.width/2 &&
+             this.y > alvo.y && this.y < alvo.y + AlvoImg.height/2;
     }
   }
