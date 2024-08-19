@@ -1,4 +1,3 @@
-let snd;
 //Variáveis//
 let cursorImg;
 let AlvoImg;
@@ -10,14 +9,17 @@ let meteoros = [];
 let vida = 3;
 let pontuacao = 0;
 let n_meteoros = 4;
+let laserImg;
+let snd;
 
 //Função para carregar a imegem e deixar pronto pra uso//
 function preload() {
-   soundFormats('mp3');
-   snd = loadSound('./efeito.mp3');
+  soundFormats('mp3');
+  snd = loadSound('./efeito.mp3');
   meteoroImg = loadImage("Meteor1.png");
   cursorImg = loadImage("nave.png");
   AlvoImg = loadImage("navets.png");
+  laserImg = loadImage("laser.png");
 }
 
 function setup() {

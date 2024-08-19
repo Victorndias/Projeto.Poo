@@ -21,8 +21,7 @@ class Disparo {
     
     //Cor, tamanho e deixar centralizado o disparo da nave//
     display() {
-      fill('yellow');
-      ellipse(this.x+ cursorImg.width /2, this.y, 5, 10);
+      image(laserImg, this.x+ cursorImg.width /2, this.y, 25, 25);
     }
 
     //Trecho responsável por verificar se acertou ou o alvo// 
