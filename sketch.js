@@ -1,3 +1,4 @@
+let snd;
 //Variáveis//
 let cursorImg;
 let AlvoImg;
@@ -12,6 +13,8 @@ let n_meteoros = 4;
 
 //Função para carregar a imegem e deixar pronto pra uso//
 function preload() {
+   soundFormats('mp3');
+   snd = loadSound('./efeito.mp3');
   meteoroImg = loadImage("Meteor1.png");
   cursorImg = loadImage("nave.png");
   AlvoImg = loadImage("navets.png");
@@ -20,7 +23,7 @@ function preload() {
 function setup() {
   createCanvas(920,600);
   noCursor();
-
+  snd.loop();
   //criar um novo objetivo a partir dessa classe//
   nave = new Nave();
   disparo = new Disparo();
