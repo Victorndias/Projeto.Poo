@@ -1,6 +1,6 @@
 class Meteoro { //Meteoro inimigo//
     constructor() {
-      this.xMeteoro = random(40, 850);
+      this.xMeteoro = random(0, 850);
      this.y = random(0, 150);
     }
     move() {
@@ -12,7 +12,7 @@ class Meteoro { //Meteoro inimigo//
     }
     //reinicia e gerar uma posição aleatória//
     reset() {
-      this.xMeteoro = random(40, 850);
+      this.xMeteoro = random(0, 850);
      this.y = random(0, 150);
     }
 

@@ -19,14 +19,19 @@ class Disparo {
       }
     }
     
-    //Cor, tamanho e deixar centralizado o disparo da nave//
+    //Posição e centralizado o disparo da nave//
     display() {
-      image(laserImg, this.x+ cursorImg.width /2, this.y, 25, 25);
+      image(laserImg, this.x+ cursorImg.width /3, this.y, 25, 25);
     }
 
-    //Trecho responsável por verificar se acertou ou o alvo// 
+    //Trecho responsável por verificar se acertou ou não o alvo// 
     acertou(alvo) {
       return this.x > alvo.xNave/2 && this.x < alvo.xNave + AlvoImg.width/2 &&
              this.y > alvo.y && this.y < alvo.y + AlvoImg.height/2;
     }
+
+    acertouMet(meteoro) {
+      return this.x > meteoro.xMeteoro && this.x < meteoro.xMeteoro + meteoroImg.width/2 &&
+             this.y > meteoro.y && this.y < meteoro.y + meteoroImg.height/2;
+    }    
   }

@@ -7,8 +7,7 @@ let disparo;
 let estrelas = [];
 let meteoros = [];
 let vida = 3;
-let pontuacao = 0;
-let n_meteoros = 4;
+let pontuacao = 0
 let laserImg;
 let snd;
 
@@ -29,10 +28,10 @@ function setup() {
   //criar um novo objetivo a partir dessa classe//
   nave = new Nave();
   disparo = new Disparo();
+  meteoro = new Meteoro(); 
 
-  for (let i = 0; i < n_meteoros; i++){
-    meteoros.push(new Meteoro());
-  }
+
+  
 
   //for responsável por criar um lop e adiciona estrelas até chegar na quantidade desejada//
   for (let i = 0; i < 5; i++) {
@@ -47,10 +46,10 @@ function draw() {
   nave.move();
   nave.display();
 
-  for (let i = 0; i < n_meteoros; i++) {
-    meteoros[i].move();
-    meteoros[i].display();
-  }
+  
+    meteoro.move();
+    meteoro.display();
+  
 
   if (disparo.ativo) {
     disparo.move();
@@ -62,6 +61,12 @@ function draw() {
       pontuacao++;
       nave.reset();
     }
+
+    if (disparo.acertouMet(meteoro)) {
+      disparo.ativo = false;
+      meteoro.reset();
+    }
+
   }
 
   for (let estrela of estrelas) {
@@ -70,9 +75,9 @@ function draw() {
   }
 
 //verifica a saída dos meteoros 
- for (let i = 0; i < n_meteoros; i++) {
-   meteoros[i].verificaSaida();
- }
+ 
+   meteoro.verificaSaida();
+ 
   
   //Verifica se o alvo saiu da tela ou não//
   nave.verificaSaida();
