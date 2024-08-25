@@ -5,7 +5,6 @@ let meteoroImg;
 let alvo;
 let disparo;
 let estrelas = [];
-let meteoros = [];
 let vida = 3;
 let pontuacao = 0
 let laserImg;
@@ -41,7 +40,10 @@ function setup() {
 
 function draw() {
   background('rgb(1,1,13)');
-
+   
+    // Verificar colisão entre o jogador e a nave inimiga
+    nave.verificarColisao();
+    
   //move e desenhar na interface//
   nave.move();
   nave.display();

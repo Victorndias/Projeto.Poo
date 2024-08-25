@@ -31,7 +31,7 @@ class Disparo {
     }
 
     acertouMet(meteoro) {
-      return this.x > meteoro.xMeteoro && this.x < meteoro.xMeteoro + meteoroImg.width/2 &&
+      return this.x > meteoro.xMeteoro/2 && this.x < meteoro.xMeteoro + meteoroImg.width/2 &&
              this.y > meteoro.y && this.y < meteoro.y + meteoroImg.height/2;
     }    
   }
