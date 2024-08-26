@@ -44,6 +44,7 @@ function draw() {
     // Verificar colisão entre o jogador e a nave inimiga
     nave.verificarColisao();
     
+    meteoro.ColisaoMet();
   //move e desenhar na interface//
   nave.move();
   nave.display();
