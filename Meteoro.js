@@ -1,5 +1,5 @@
 class Meteoro { //Meteoro inimigo//
-    constructor() {
+    constructor(xMeteoro, y) {
       this.xMeteoro = random(0, 850);
      this.y = random(0, 150);
      this.raioM = 25;

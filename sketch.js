@@ -29,6 +29,7 @@ function setup() {
   disparo = new Disparo();
   meteoro = new Meteoro(); 
   nave2 = new Nave2(100, 50);
+  meteoro2 = new Meteoro2();
 
   //for responsável por criar um lop e adiciona estrelas até chegar na quantidade desejada//
   for (let i = 0; i < 5; i++) {
@@ -44,6 +45,7 @@ function draw() {
     nave2.verificarColisao();
     
     meteoro.ColisaoMet();
+    meteoro2.ColisaoMet();
   //move e desenhar na interface//
   nave.move();
   nave.display();
@@ -52,7 +54,8 @@ function draw() {
   
     meteoro.move();
     meteoro.display();
-  
+    meteoro2.move();
+    meteoro2.display();
 
   if (disparo.ativo) {
     disparo.move();
@@ -76,6 +79,11 @@ function draw() {
       meteoro.reset();
     }
 
+    if (disparo.acertouMet(meteoro2)) {
+      disparo.ativo = false;
+      meteoro2.reset();
+    }
+
   }
 
   for (let estrela of estrelas) {
@@ -84,9 +92,8 @@ function draw() {
   }
 
 //verifica a saída dos meteoros 
- 
    meteoro.verificaSaida();
- 
+   meteoro2.verificaSaida();
   
   //Verifica se o alvo saiu da tela ou não//
   nave.verificaSaida();
