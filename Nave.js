@@ -1,5 +1,5 @@
 class Nave {
-  constructor() {
+  constructor(xNave, y) {
     this.xNave = random(50, 850);
     this.y = 0;
     this.raioColisao = 25;
