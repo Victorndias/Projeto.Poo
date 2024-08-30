@@ -9,6 +9,8 @@ let vida = 3;
 let pontuacao = 0
 let laserImg;
 let snd;
+let InimigoImg;
+let meteorImg;
 
 //Função para carregar a imegem e deixar pronto pra uso//
 function preload() {
@@ -18,6 +20,8 @@ function preload() {
   cursorImg = loadImage("nave.png");
   AlvoImg = loadImage("navets.png");
   laserImg = loadImage("laser.png");
+  InimigoImg = loadImage("sPlayer_0.png");
+  meteorImg = loadImage("Meteor2.png");
 }
 
 function setup() {
