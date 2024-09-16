@@ -16,14 +16,14 @@ let Inimigo2Img;
 //Função para carregar a imegem e deixar pronto pra uso//
 function preload() {
   soundFormats('mp3');
-  snd = loadSound('./efeito.mp3');
-  meteoroImg = loadImage("Meteor1.png");
-  cursorImg = loadImage("nave.png");
-  AlvoImg = loadImage("navets.png");
-  laserImg = loadImage("laser.png");
-  InimigoImg = loadImage("sPlayer_0.png");
-  meteorImg = loadImage("Meteor2.png");
-  Inimigo2Img = loadImage("navets3.png");
+  snd = loadSound('sons/efeito.mp3');
+  meteoroImg = loadImage("images/Meteor1.png");
+  cursorImg = loadImage("images/nave.png");
+  AlvoImg = loadImage("images/navets.png");
+  laserImg = loadImage("images/laser.png");
+  InimigoImg = loadImage("images/sPlayer_0.png");
+  meteorImg = loadImage("images/Meteor2.png");
+  Inimigo2Img = loadImage("images/navets3.png");
 }
 
 function setup() {
