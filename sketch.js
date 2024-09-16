@@ -31,7 +31,7 @@ function preload() {
 function setup() {
   createCanvas(920,600);
   noCursor();
-  //snd.loop();
+  snd.loop();
   //criar um novo objetivo a partir dessa classe//
   nave = new Nave();
   disparo = new Disparo();
