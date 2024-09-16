@@ -12,11 +12,13 @@ let snd;
 let InimigoImg;
 let meteorImg;
 let Inimigo2Img;
+let laser;
 
 //Função para carregar a imegem e deixar pronto pra uso//
 function preload() {
-  soundFormats('mp3');
+  soundFormats('mp3','wav');
   snd = loadSound('sons/efeito.mp3');
+  laser = loadSound('sons/laser.wav');
   meteoroImg = loadImage("images/Meteor1.png");
   cursorImg = loadImage("images/nave.png");
   AlvoImg = loadImage("images/navets.png");
@@ -29,7 +31,7 @@ function preload() {
 function setup() {
   createCanvas(920,600);
   noCursor();
-  snd.loop();
+  //snd.loop();
   //criar um novo objetivo a partir dessa classe//
   nave = new Nave();
   disparo = new Disparo();
@@ -42,6 +44,7 @@ function setup() {
   for (let i = 0; i < 5; i++) {
     estrelas.push(new Estrela());
   }
+  
 }
 
 function draw() {
@@ -129,6 +132,9 @@ function draw() {
 function mousePressed() {
     if (!disparo.ativo) {
     disparo.ativar(mouseX, mouseY);
+  }
+  if (mouseButton === LEFT) {
+    laser.play();
   }
 }
 
