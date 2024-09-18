@@ -13,6 +13,7 @@ let InimigoImg;
 let meteorImg;
 let Inimigo2Img;
 let laser;
+let meteor3Img;
 
 //Função para carregar a imegem e deixar pronto pra uso//
 function preload() {
@@ -26,6 +27,7 @@ function preload() {
   InimigoImg = loadImage("images/sPlayer_0.png");
   meteorImg = loadImage("images/Meteor2.png");
   Inimigo2Img = loadImage("images/navets3.png");
+  meteor3Img = loadImage("images/Meteor3.png");
 }
 
 function setup() {
@@ -39,6 +41,7 @@ function setup() {
   nave2 = new Nave2();
   meteoro2 = new Meteoro2();
   nave3 = new Nave3();
+  meteoro3 = new Meteoro3();
 
   //for responsável por criar um lop e adiciona estrelas até chegar na quantidade desejada//
   for (let i = 0; i < 5; i++) {
@@ -57,6 +60,7 @@ function draw() {
     
     meteoro.ColisaoMet();
     meteoro2.ColisaoMet();
+    meteoro3.ColisaoMet();
   //move e desenhar na interface//
   nave.move();
   nave.display();
@@ -69,6 +73,8 @@ function draw() {
     meteoro.display();
     meteoro2.move();
     meteoro2.display();
+    meteoro3.move();
+    meteoro3.display();
 
   if (disparo.ativo) {
     disparo.move();
@@ -103,6 +109,10 @@ function draw() {
       meteoro2.reset();
     }
 
+    if (disparo.acertouMet(meteoro3)) {
+      disparo.ativo = false;
+      meteoro3.reset();
+    }
   }
 
   for (let estrela of estrelas) {
@@ -113,6 +123,7 @@ function draw() {
 //verifica a saída dos meteoros 
    meteoro.verificaSaida();
    meteoro2.verificaSaida();
+   meteoro3.verificaSaida();
   
   //Verifica se o alvo saiu da tela ou não//
   nave.verificaSaida();
