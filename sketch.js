@@ -1,4 +1,4 @@
-//Variáveis//
+// Variáveis globais
 let cursorImg;
 let AlvoImg;
 let meteoroImg;
@@ -6,7 +6,7 @@ let alvo;
 let disparo;
 let estrelas = [];
 let vida = 3;
-let pontuacao = 0
+let pontuacao = 0;
 let laserImg;
 let snd;
 let InimigoImg;
@@ -14,8 +14,9 @@ let meteorImg;
 let Inimigo2Img;
 let laser;
 let meteor3Img;
+let naves = [];
+let meteoros = []; 
 
-//Função para carregar a imegem e deixar pronto pra uso//
 function preload() {
   soundFormats('mp3','wav');
   snd = loadSound('sons/efeito.mp3');
@@ -27,125 +28,91 @@ function preload() {
   InimigoImg = loadImage("images/sPlayer_0.png");
   meteorImg = loadImage("images/Meteor2.png");
   Inimigo2Img = loadImage("images/navets3.png");
-  meteor3Img = loadImage("images/Meteor3.png");
+  meteor3Img = loadImage("images/Meteor3.png"); 
 }
 
 function setup() {
   createCanvas(920,600);
   noCursor();
   snd.loop();
-  //criar um novo objetivo a partir dessa classe//
-  nave = new Nave();
-  disparo = new Disparo();
-  meteoro = new Meteoro(); 
-  nave2 = new Nave2();
-  meteoro2 = new Meteoro2();
-  nave3 = new Nave3();
-  meteoro3 = new Meteoro3();
 
-  //for responsável por criar um lop e adiciona estrelas até chegar na quantidade desejada//
+  naves.push(new Nave());
+  naves.push(new Nave2());
+  naves.push(new Nave3());
+
+    meteoros.push(new Meteoro());
+    meteoros.push(new Meteoro2());
+    meteoros.push(new Meteoro3());
+
+  // Adicionar estrelas
   for (let i = 0; i < 5; i++) {
     estrelas.push(new Estrela());
   }
-  
+
+  disparo = new Disparo();
+
 }
 
 function draw() {
   background('rgb(1,1,13)');
-   
-    // Verificar colisão entre o jogador e a nave inimiga
+
+  // Iteração para todas as naves
+  for (let nave of naves) {
+    nave.move();
+    nave.display();
     nave.verificarColisao();
-    nave2.verificarColisao();
-    nave3.verificarColisao();
-    
-    meteoro.ColisaoMet();
-    meteoro2.ColisaoMet();
-    meteoro3.ColisaoMet();
-  //move e desenhar na interface//
-  nave.move();
-  nave.display();
-  nave2.move();
-  nave2.display();
-  nave3.move();
-  nave3.display();
-  
-    meteoro.move();
-    meteoro.display();
-    meteoro2.move();
-    meteoro2.display();
-    meteoro3.move();
-    meteoro3.display();
-
-  if (disparo.ativo) {
-    disparo.move();
-    disparo.display();
-
-    //if para verificar se acertou o alvo//
-    if (disparo.acertou(nave)) {
-      disparo.ativo = false;
-      pontuacao++;
-      nave.reset();
-    }
-
-    if (disparo.acertou(nave2)) {
-      disparo.ativo = false;
-      pontuacao++;
-      nave2.reset();
-    }
-
-    if (disparo.acertou(nave3)) {
-      disparo.ativo = false;
-      pontuacao++;
-      nave3.reset();
-    }
-
-    if (disparo.acertouMet(meteoro)) {
-      disparo.ativo = false;
-      meteoro.reset();
-    }
-
-    if (disparo.acertouMet(meteoro2)) {
-      disparo.ativo = false;
-      meteoro2.reset();
-    }
-
-    if (disparo.acertouMet(meteoro3)) {
-      disparo.ativo = false;
-      meteoro3.reset();
-    }
+    nave.verificaSaida();
   }
 
+  // Iteração para todos os meteoros
+  for (let meteoro of meteoros) {
+    meteoro.move();
+    meteoro.display();
+    meteoro.verificaSaida();
+    meteoro.ColisaoMet();
+  }
+
+  // Atualização das estrelas
   for (let estrela of estrelas) {
     estrela.display();
     estrela.update();
   }
 
-//verifica a saída dos meteoros 
-   meteoro.verificaSaida();
-   meteoro2.verificaSaida();
-   meteoro3.verificaSaida();
-  
-  //Verifica se o alvo saiu da tela ou não//
-  nave.verificaSaida();
-  nave2.verificaSaida();
-  nave3.verificaSaida();
+  // Verifique se o disparo acertou alguma nave
+  if (disparo.ativo) {
+    disparo.move();
+    disparo.display();
 
-  //Objetivo é desenhar na interface//
+    for (let nave of naves) {
+      if (disparo.acertou(nave)) {
+        disparo.ativo = false;
+        pontuacao++;
+        nave.reset();
+      }
+    }
+    
+    for (let meteoro of meteoros) {
+      if (disparo.acertouMet(meteoro)) {
+        disparo.ativo = false;
+        meteoro.reset();
+      }
+    }
+  }
+
   displayHUD();
-
-  //IF para observar se a vida ficou menor ou igual a 0//
+  
   if (vida <= 0) {
     gameOver();
   }
 }
 
-//função para verificar se o mouse foi pressionado, se sim a ação é efetuado//
+// Função para verificar se o mouse foi pressionado e efetuar a ação
 function mousePressed() {
-    if (!disparo.ativo) {
-    disparo.ativar(mouseX, mouseY);
+  if (!disparo.ativo) {
+  disparo.ativar(mouseX, mouseY);
   }
   if (mouseButton === LEFT) {
-    laser.play();
+  laser.play();
   }
 }
 
@@ -166,7 +133,7 @@ function displayHUD() {
   text("Pontuação: " + pontuacao, 10, 50);
 }
 
-// Desenha Game Over na tela//
+// Desenha Game Over na tela
 function gameOver() {
   noLoop();
   fill('red');
