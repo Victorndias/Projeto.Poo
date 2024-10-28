@@ -3,8 +3,6 @@ class Nave {
     this.xNave = random(50, 850);
     this.y = 0;
     this.raioColisao = 25;
-    this.velocidade = 0.5;
-    this.direcao = 0.5;
   }
 
   verificarColisao() {
@@ -22,15 +20,7 @@ class Nave {
   }
 
     move() {
-      if (this.xNave < width && this.direcao === 0.5) {
-        this.xNave += this.velocidade;
-      } else if (this.xNave >= width) {
-        this.direcao = -0.5;
-      } else if (this.xNave <= 0) {
-        this.direcao = 0.5;
-      }
-      this.xNave += this.direcao;
-      this.y += this.velocidade;
+      this.y++;
     }
 
   display() {

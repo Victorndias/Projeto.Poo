@@ -33,11 +33,12 @@ class Meteoro { //Meteoro inimigo//
   reset() {
     this.xMeteoro = random(0, 850);
     this.y = random(0, 150);
+    this.velocidadeX = random(-1, 1); // Redefine a velocidade no eixo X para movimento diagonal
   }
 
   verificaSaida() {
-    if (this.y > height) {
-      this.reset();
+    if (this.y > height || this.xMeteoro < 0 || this.xMeteoro > width) {
+      this.reset(); // Reseta quando sair da tela
     }
   }
 }
